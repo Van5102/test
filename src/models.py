@@ -39,13 +39,13 @@ class order(db.Model):
 class Ticket(db.Model):
     __tablename__ = 'ticket'
     id = Column(INTEGER, primary_key = True)
-    customer_id = Column(INTEGER, ForeignKey(customer.customer_id))
+    order_id = Column(INTEGER, ForeignKey(order.order_id))
     food_id = Column(INTEGER, ForeignKey(food.food_id))
     quantity = Column(INTEGER, nullable = False)
     price = Column(FLOAT, default = 0)
 
-    def __init__(self, customer_id, food_id, quantity, price):
-        self.customer_id = customer_id
+    def __init__(self, order_id, food_id, quantity, price):
+        self.order_id = order_id
         self.food_id = food_id
         self.quantity = quantity
         self.price = price
