@@ -222,7 +222,7 @@ def get_food_with_quantity_view():
         ).group_by(
             food.food_id
         ).having(
-            func.sum(order.total) > 200
+            func.sum(order.total) > 500
         ).all()
         return ticket_schema.dump(Food), HTTPStatus.OK
     except Exception as e:
