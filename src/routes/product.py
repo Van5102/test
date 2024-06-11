@@ -30,15 +30,15 @@ def order_action():
 @user_route.route('/get_all_order')
 def get_all_order():
     return get_order_view()
-# 1
+
 @user_route.route('/get_customer_order')
 def get_customer_order():
     return get_customer_order_view()
-# 2
+
 @user_route.route('/get_order_infor')
 def get_order_infor():
     return get_ticket_view()
-# 3
+
 @user_route.route('/get_food_with_quantity', methods=['GET'])
 def get_food_with_quantity():
     return get_food_with_quantity_view()

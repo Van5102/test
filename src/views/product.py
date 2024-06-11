@@ -149,7 +149,6 @@ def get_order_view():
         session.commit()
         session.close()
 
-# 1
 def get_customer_order_view():
     session = db.session()
     try:
@@ -173,7 +172,6 @@ def get_customer_order_view():
         session.commit()
         session.close()
 
-# 2
 # update with inner join: done
 def get_ticket_view():
     session = db.session()
