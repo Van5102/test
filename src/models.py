@@ -22,28 +22,30 @@ class food(db.Model):
 
     def __init__(self, food_name, price):
         self.food_name = food_name
-        self.price = price
-
+        self.price = price 
+        
 class order(db.Model):
     __tablename__ = 'order'
     order_id = Column(INTEGER, primary_key=True)
     customer_id = Column(INTEGER, ForeignKey(customer.customer_id))
-    food_id = Column(INTEGER, ForeignKey(food.food_id))
-    quantity = Column(INTEGER, default=1)
-    order_price = Column(FLOAT, default = food.price * quantity)
+    total = Column(FLOAT)
+    status = Column(Boolean, default=False)
 
-    def __init__(self, customer_id, food_id, quantity):
+    def __init__(self, customer_id, total, status):
+        self.customer_id = customer_id
+        self.total = total
+        self.status = status
+       
+class Ticket(db.Model):
+    __tablename__ = 'ticket'
+    id = Column(INTEGER, primary_key = True)
+    customer_id = Column(INTEGER, ForeignKey(customer.customer_id))
+    food_id = Column(INTEGER, ForeignKey(food.food_id))
+    quantity = Column(INTEGER, nullable = False)
+    price = Column(FLOAT, default = 0)
+
+    def __init__(self, customer_id, food_id, quantity, price):
         self.customer_id = customer_id
         self.food_id = food_id
         self.quantity = quantity
-       
-class ship(db.Model):
-    __tablename__ = 'ship'
-    id = Column(INTEGER, primary_key = True)
-    customer_id = Column(INTEGER, ForeignKey(customer.customer_id))
-    order_id = Column(INTEGER, ForeignKey(order.order_id))
-    status = Column(Boolean, default = False)
-
-    def __init__(self, customer_id, order_id):
-        self.customer_id = customer_id
-        self.order_id = order_id
+        self.price = price
