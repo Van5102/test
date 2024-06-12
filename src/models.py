@@ -6,7 +6,7 @@ class customer(db.Model):
     __tablename__ = 'customer'
     customer_id = Column(INTEGER, primary_key=True)
     customer_name = Column(NVARCHAR(50), nullable=False)
-    customer_phone = Column(VARCHAR(20), unique=True, nullable=False)
+    customer_phone = Column(VARCHAR(20), nullable=False)
     customer_address = Column(NVARCHAR(100), nullable=False)
 
     def __init__(self, customer_name, customer_phone, customer_address):
@@ -22,8 +22,8 @@ class food(db.Model):
 
     def __init__(self, food_name, price):
         self.food_name = food_name
-        self.price = price 
-        
+        self.price = price
+            
 class order(db.Model):
     __tablename__ = 'order'
     order_id = Column(INTEGER, primary_key=True)

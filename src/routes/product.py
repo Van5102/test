@@ -2,7 +2,7 @@ from flask import Blueprint
 from src.views.product import *
 
 user_route = Blueprint('user', __name__)
-#1
+
 @user_route.route('/add_food', methods=['POST'])
 def add_food():
     return add_food_view()
